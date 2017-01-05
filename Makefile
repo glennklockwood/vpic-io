@@ -10,4 +10,4 @@ all: vpicio_uni vpicio_uni_dyn
 
 vpicio_uni_dyn: LDFLAGS += -dynamic
 vpicio_uni_dyn: vpicio_uni.o
-	$(CC) $(LDFLAGS) $< $(LOADLIBES) $(LDLIBS) -o $@
+	$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
