@@ -4,10 +4,15 @@ CFLAGS  = -DPARALLEL_IO -I$(H5PART_ROOT)/include
 LDFLAGS = -L$(H5PART_ROOT)/lib 
 LDLIBS  = -lH5Part
 
-.PHONY: all
+.PHONY: all clean
 
-all: vpicio_uni vpicio_uni_dyn
+BINARIES = vpicio_uni vpicio_uni_dyn
+
+all: $(BINARIES)
 
 vpicio_uni_dyn: LDFLAGS += -dynamic
 vpicio_uni_dyn: vpicio_uni.o
 	$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+clean:
+	rm -f *.o $(BINARIES)
